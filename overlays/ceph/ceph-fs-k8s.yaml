@@ -1,4 +1,4 @@
 applications:
-  __K8S_CONTROLLER_CHARM__:
+  ceph-csi:
     options:
       default-storage: cephfs

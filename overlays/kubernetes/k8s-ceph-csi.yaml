@@ -2,11 +2,8 @@ applications:
   ceph-csi:
     charm: ceph-csi
     channel: stable
-  __K8S_CONTROLLER_CHARM__:
-    options:
-      allow-privileged: "true"
 
 relations:
-  - [ '__K8S_CONTROLLER_CHARM__:juju-info', 'ceph-csi:kubernetes' ]
+  - [ '__K8S_CONTROLLER_CHARM__:ceph-k8s-info', 'ceph-csi:kubernetes-info' ]
   - [ 'ceph-csi:ceph-client', 'ceph-mon:client']
 

@@ -105,7 +105,10 @@ do
             conflicts_with $1 --rook-ceph
             MOD_OVERLAYS+=( "ceph/ceph.yaml" )
             MOD_OVERLAYS+=( "ceph/ceph-juju-storage.yaml" )
-            MOD_OVERLAYS+=( "kubernetes/k8s-ceph.yaml" )
+            # Only add direct k8s-ceph relation for Charmed Kubernetes
+            if has_opt --cdk; then
+                MOD_OVERLAYS+=( "kubernetes/k8s-ceph.yaml" )
+            fi
             MOD_OVERLAYS+=( "kubernetes/k8s-ceph-csi.yaml" )
             ;;
         --ceph-proxy)
