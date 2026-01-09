@@ -1,0 +1,2 @@
+relations:
+ - ['openstack-integrator', '__K8S_CONTROLLER_CHARM__:external-load-balancer']

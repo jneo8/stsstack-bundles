@@ -205,7 +205,11 @@ do
             conflicts_with $1 '--lb-ha-hacluster*'
             conflicts_with $1 '--lb-ha-keepalived*'
             conflicts_with $1 '--control-plane-ha*'
-            MOD_OVERLAYS+=( "kubernetes/k8s-octavia-lb.yaml" )
+            if has_opt --cdk; then
+                MOD_OVERLAYS+=( "kubernetes/k8s-octavia-lb.yaml" )
+            else
+                MOD_OVERLAYS+=( "kubernetes/canonical-k8s-octavia-lb.yaml" )
+            fi
             ;;
         --control-plane-ha*)
             if has_opt --lb-ha*; then
